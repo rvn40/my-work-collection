@@ -1,0 +1,13 @@
+---
+
+
+- name: Set images from google artifact to particular deployments
+  shell: "kubectl set image deployment/{{image.gar_name}} {{image.gar_name}}={{artifact_registry.url}}/{{artifact_registry.dir}}{{image.gar_name}}:{{image.gar_tag}} --record"
+  with_items: "{{migrated.images}}"
+  loop_control:
+    loop_var: image
+  register: deploy_list
+
+- debug:
+    msg: "{{item.stdout_lines}}"
+  with_items: "{{deploy_list.results}}"

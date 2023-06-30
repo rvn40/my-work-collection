@@ -1,0 +1,20 @@
+---
+
+- name: Create a New Bucket
+  gcp_storage_bucket:
+    name: "{{ general.prefix_first }}-{{ general.prefix_second }}-{{ bucket[0].name }}-{{ bucket[1].index }}"  # Should be unique based on GCP rules
+    storage_class: "{{ bucket[1].storage_class }}"
+    location: "{{ bucket[1].location }}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+    state: present
+  with_subelements:
+    - "{{buckets}}"
+    - properties
+  loop_control:
+    loop_var: bucket
+  register: bc_results
+
+- debug:
+    var: bc_results

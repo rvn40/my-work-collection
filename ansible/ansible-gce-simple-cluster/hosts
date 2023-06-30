@@ -1,0 +1,35 @@
+[local]
+localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python3
+
+
+[all_python3]
+ap3_rcloud_labs_west1_rancher_k8s_master_01 ansible_connection=ssh ansible_host=172.25.3.200 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+ap3_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01 ansible_connection=ssh ansible_host=172.25.3.201 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+ap3_rcloud_labs_west1_rancher_k8s_worker_01 ansible_connection=ssh ansible_host=172.25.3.202 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+ap3_rcloud_labs_west1_rancher_k8s_worker_02 ansible_connection=ssh ansible_host=172.25.3.203 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+
+[all_python2]
+ap2_rcloud_labs_west1_rancher_k8s_master_01 ansible_connection=ssh ansible_host=172.25.3.200 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01 ansible_connection=ssh ansible_host=172.25.3.201 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+ap2_rcloud_labs_west1_rancher_k8s_worker_01 ansible_connection=ssh ansible_host=172.25.3.202 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+ap2_rcloud_labs_west1_rancher_k8s_worker_02 ansible_connection=ssh ansible_host=172.25.3.203 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+
+[rancher_k8s_master]
+rkmp3_rcloud_labs_west1_rancher_k8s_master_01 ansible_connection=ssh ansible_host=172.25.3.200 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+
+[rancher_k8s_master_python2]
+rkmp2_rcloud_labs_west1_rancher_k8s_master_01 ansible_connection=ssh ansible_host=172.25.3.200 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+
+[rancher_k8s_etcd_controlplane]
+rkecp3_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01 ansible_connection=ssh ansible_host=172.25.3.201 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+
+[rancher_k8s_etcd_controlplane_python2]
+rkecp2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01 ansible_connection=ssh ansible_host=172.25.3.201 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+
+[rancher_k8s_worker]
+rkwp3_rcloud_labs_west1_rancher_k8s_worker_01 ansible_connection=ssh ansible_host=172.25.3.202 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+rkwp3_rcloud_labs_west1_rancher_k8s_worker_02 ansible_connection=ssh ansible_host=172.25.3.203 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python3 
+
+[rancher_k8s_worker_python2]
+rkwp2_rcloud_labs_west1_rancher_k8s_worker_01 ansible_connection=ssh ansible_host=172.25.3.202 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 
+rkwp2_rcloud_labs_west1_rancher_k8s_worker_02 ansible_connection=ssh ansible_host=172.25.3.203 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=files/ssh_keys/rivan_amar.pem ansible_user=rivan_amarbank ansible_python_interpreter=/usr/bin/python 

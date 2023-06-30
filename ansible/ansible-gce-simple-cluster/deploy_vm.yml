@@ -1,0 +1,9 @@
+---
+
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/vars.yml
+  tasks: 
+    - include: tasks/vm.yml
+    - include: tasks/updatehosts.yml

@@ -1,0 +1,11 @@
+---
+
+- name: Print all available facts
+  ansible.builtin.debug:
+    msg: "{{cluster_members}}"
+
+- name: Generate hosts file
+  template:
+    src: files/templates/hosts.j2
+    dest: hosts
+    mode: '0644'

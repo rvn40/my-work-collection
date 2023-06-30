@@ -1,0 +1,21 @@
+---
+
+postgres:
+  project_name: funding-development
+  sa_name: "amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com"
+  sa_file_loc: "files/serviceaccounts/amarbank-sre-owner.json"
+  instance_name: development-funding
+  instance_ip: 34.101.187.156
+  instance_default_username: postgres
+  instance_default_password: ypfAgzpEKwh4ebhTm2umFvek
+  dbs:
+    - db_name: dev_amarbank_friendlist_svc
+    - db_name: dev_corebanking_svc
+    - db_name: dev_csr_dashboard_api
+    - db_name: dev_csr_dashboard_api_file
+    - db_name: dev_notification_adapter
+    - db_name: dev_senyumku_depo
+    - db_name: dev_services_apps
+    - db_name: dev_services_apps_files
+    - db_name: dev_tnk_ves
+    - db_name: dev_transaction_limit_svc

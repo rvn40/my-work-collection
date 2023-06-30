@@ -1,0 +1,13 @@
+---
+
+- name: Create a Network
+  google.cloud.gcp_compute_network:
+    name: "{{general.prefix_first}}-{{general.prefix_second}}-{{vpc.name}}"
+    auto_create_subnetworks: 'false'
+    routing_config:
+      routing_mode: "{{vpc.routing_mode}}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+    state: present
+  register: rg_network

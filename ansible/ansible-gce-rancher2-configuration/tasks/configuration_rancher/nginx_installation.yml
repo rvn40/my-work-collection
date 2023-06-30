@@ -1,0 +1,67 @@
+---
+
+- name: Get info of nginx container
+  community.general.docker_container_info:
+    name: proxy_rancher
+  register: nginxRancher
+
+- name: Remove existing nginx container
+  community.general.docker_container:
+    name: proxy_rancher
+    state: absent
+    force_kill: yes
+  when: nginxRancher.exists
+
+- name: Create data directories
+  file:
+    path: "/home/{{users.ssh[0].username}}/{{item}}"
+    mode: '0755'
+    state: directory
+  with_items:
+    - nginx
+
+- name: Get infos on network
+  community.general.docker_network_info:
+    name: dNetwork01
+  register: dNetwork
+
+- name: Create a docker network
+  community.general.docker_network:
+    name: dNetwork01
+    state: present
+  when: not dNetwork.exists
+
+- name: Copy nginx conf
+  copy:
+    src: files/nginx/nginx.conf
+    dest: "/home/{{users.ssh[0].username}}/nginx/nginx.conf"
+    mode: '0644'
+
+- name: Copy ssl files
+  copy:
+    src: "files/ssl/{{item}}"
+    dest: "/home/{{users.ssh[0].username}}/nginx/{{item}}"
+    mode: '0400'
+  with_items:
+    - cert.pem
+    - cert.key
+
+- debug:
+    var: dNetwork
+
+- name: Create a nginx container
+  community.general.docker_container:
+    name: proxy_rancher
+    image: nginx:alpine
+    state: started
+    restart_policy: unless-stopped
+    detach: yes
+    networks:
+      - name: "{{ dNetwork.network.Name }}"
+    ports:
+      - 443:443
+    volumes:
+      - "/home/{{users.ssh[0].username}}/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "/home/{{users.ssh[0].username}}/nginx/cert.pem:/etc/nginx/cert.pem"
+      - "/home/{{users.ssh[0].username}}/nginx/cert.key:/etc/nginx/cert.key"
+  when: dNetwork.exists

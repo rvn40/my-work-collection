@@ -1,0 +1,8 @@
+---
+
+
+buckets:
+  - name: "prod_ab_crmf"
+    properties:
+      path: "gs://prod_ab_crmf/"
+

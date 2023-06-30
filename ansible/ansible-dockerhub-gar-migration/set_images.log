@@ -1,0 +1,35 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Set images from google artifact to particular deployments] ***************
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-kyc-web', 'dh_tag': 'development-07e4df3', 'gar_name': 'tunaiku-rekol-kyc-web', 'gar_tag': 'development-07e4df3'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-profile-management-web', 'dh_tag': 'development-bf855bf', 'gar_name': 'tunaiku-rekol-profile-management-web', 'gar_tag': 'development-bf855bf'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-registration-web', 'dh_tag': 'development-1bf19fc', 'gar_name': 'tunaiku-rekol-registration-web', 'gar_tag': 'development-1bf19fc'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-support-web', 'dh_tag': 'development-5ca01cc', 'gar_name': 'tunaiku-rekol-support-web', 'gar_tag': 'development-5ca01cc'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-trx-web', 'dh_tag': 'development-5e82440', 'gar_name': 'tunaiku-rekol-trx-web', 'gar_tag': 'development-5e82440'})
+
+TASK [debug] *******************************************************************
+ok: [localhost] => (item={'cmd': 'kubectl set image deployment/tunaiku-rekol-kyc-web tunaiku-rekol-kyc-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-kyc-web:development-07e4df3 --record', 'stdout': '', 'stderr': '', 'rc': 0, 'start': '2021-01-01 09:03:12.098240', 'end': '2021-01-01 09:03:12.323258', 'delta': '0:00:00.225018', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl set image deployment/tunaiku-rekol-kyc-web tunaiku-rekol-kyc-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-kyc-web:development-07e4df3 --record', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': [], 'stderr_lines': [], 'failed': False, 'image': {'dh_name': 'tunaiku-rekol-kyc-web', 'dh_tag': 'development-07e4df3', 'gar_name': 'tunaiku-rekol-kyc-web', 'gar_tag': 'development-07e4df3'}, 'ansible_loop_var': 'image'}) => {
+    "msg": []
+}
+ok: [localhost] => (item={'cmd': 'kubectl set image deployment/tunaiku-rekol-profile-management-web tunaiku-rekol-profile-management-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-profile-management-web:development-bf855bf --record', 'stdout': '', 'stderr': '', 'rc': 0, 'start': '2021-01-01 09:03:12.563540', 'end': '2021-01-01 09:03:12.780010', 'delta': '0:00:00.216470', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl set image deployment/tunaiku-rekol-profile-management-web tunaiku-rekol-profile-management-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-profile-management-web:development-bf855bf --record', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': [], 'stderr_lines': [], 'failed': False, 'image': {'dh_name': 'tunaiku-rekol-profile-management-web', 'dh_tag': 'development-bf855bf', 'gar_name': 'tunaiku-rekol-profile-management-web', 'gar_tag': 'development-bf855bf'}, 'ansible_loop_var': 'image'}) => {
+    "msg": []
+}
+ok: [localhost] => (item={'cmd': 'kubectl set image deployment/tunaiku-rekol-registration-web tunaiku-rekol-registration-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-registration-web:development-1bf19fc --record', 'stdout': '', 'stderr': '', 'rc': 0, 'start': '2021-01-01 09:03:13.009548', 'end': '2021-01-01 09:03:13.171673', 'delta': '0:00:00.162125', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl set image deployment/tunaiku-rekol-registration-web tunaiku-rekol-registration-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-registration-web:development-1bf19fc --record', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': [], 'stderr_lines': [], 'failed': False, 'image': {'dh_name': 'tunaiku-rekol-registration-web', 'dh_tag': 'development-1bf19fc', 'gar_name': 'tunaiku-rekol-registration-web', 'gar_tag': 'development-1bf19fc'}, 'ansible_loop_var': 'image'}) => {
+    "msg": []
+}
+ok: [localhost] => (item={'cmd': 'kubectl set image deployment/tunaiku-rekol-support-web tunaiku-rekol-support-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-support-web:development-5ca01cc --record', 'stdout': '', 'stderr': '', 'rc': 0, 'start': '2021-01-01 09:03:13.401433', 'end': '2021-01-01 09:03:13.642092', 'delta': '0:00:00.240659', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl set image deployment/tunaiku-rekol-support-web tunaiku-rekol-support-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-support-web:development-5ca01cc --record', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': [], 'stderr_lines': [], 'failed': False, 'image': {'dh_name': 'tunaiku-rekol-support-web', 'dh_tag': 'development-5ca01cc', 'gar_name': 'tunaiku-rekol-support-web', 'gar_tag': 'development-5ca01cc'}, 'ansible_loop_var': 'image'}) => {
+    "msg": []
+}
+ok: [localhost] => (item={'cmd': 'kubectl set image deployment/tunaiku-rekol-trx-web tunaiku-rekol-trx-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-trx-web:development-5e82440 --record', 'stdout': 'deployment.apps/tunaiku-rekol-trx-web image updated', 'stderr': '', 'rc': 0, 'start': '2021-01-01 09:03:13.871293', 'end': '2021-01-01 09:03:14.084264', 'delta': '0:00:00.212971', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl set image deployment/tunaiku-rekol-trx-web tunaiku-rekol-trx-web=asia-docker.pkg.dev/amarbank-sre/ab-registry/tunaiku-rekol-trx-web:development-5e82440 --record', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['deployment.apps/tunaiku-rekol-trx-web image updated'], 'stderr_lines': [], 'failed': False, 'image': {'dh_name': 'tunaiku-rekol-trx-web', 'dh_tag': 'development-5e82440', 'gar_name': 'tunaiku-rekol-trx-web', 'gar_tag': 'development-5e82440'}, 'ansible_loop_var': 'image'}) => {
+    "msg": [
+        "deployment.apps/tunaiku-rekol-trx-web image updated"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

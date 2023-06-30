@@ -1,0 +1,175 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Run update yum and download some packages] *******************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Run gcc version] *********************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Run command download python3] ********************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Remove SSH-keygen] *******************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Extract python3 package] *************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Running configure script] ************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Running the make install] ************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Check if rules python3 symlink exists] ***********************************
+ok: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+ok: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+ok: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+ok: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Check if rules pip3 symlink exists] **************************************
+ok: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+ok: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+ok: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+ok: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Create symlink python3] **************************************************
+changed: [localhost -> 35.212.154.136] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/python3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_master_01', 'ansible_loop_var': 'item'})
+changed: [localhost -> 35.212.161.146] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/python3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01', 'ansible_loop_var': 'item'})
+changed: [localhost -> 35.212.176.120] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/python3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_worker_01', 'ansible_loop_var': 'item'})
+changed: [localhost -> 35.212.196.18] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/python3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_worker_02', 'ansible_loop_var': 'item'})
+
+TASK [Create symlink pip3] *****************************************************
+changed: [localhost -> 35.212.154.136] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/pip3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_master_01', 'ansible_loop_var': 'item'})
+changed: [localhost -> 35.212.161.146] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/pip3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01', 'ansible_loop_var': 'item'})
+changed: [localhost -> 35.212.176.120] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/pip3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_worker_01', 'ansible_loop_var': 'item'})
+changed: [localhost -> 35.212.196.18] => (item={'invocation': {'module_args': {'checksum_algorithm': 'sha1', 'get_checksum': True, 'follow': False, 'path': '/usr/bin/pip3', 'get_md5': False, 'get_mime': True, 'get_attributes': True}}, 'stat': {'exists': False}, 'changed': False, 'failed': False, 'item': 'ap2_rcloud_labs_west1_rancher_k8s_worker_02', 'ansible_loop_var': 'item'})
+
+TASK [Remove SSH-keygen] *******************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Run python3 version] *****************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Run pip3 version] ********************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Install python-dnf] ******************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Add the EPEL Repository] *************************************************
+ok: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+ok: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+ok: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+ok: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Install yum-plugin-copr and libselinux-python3] **************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Enable copr repo rpmsoftwaremanagement/dnf] ******************************
+failed: [localhost -> 35.212.154.136] (item=ap2_rcloud_labs_west1_rancher_k8s_master_01) => {"ansible_loop_var": "item", "changed": true, "cmd": "yum copr enable rpmsoftwaremanagement/dnf-nightly -y", "delta": "0:00:01.743161", "end": "2021-01-13 10:09:11.351016", "item": "ap2_rcloud_labs_west1_rancher_k8s_master_01", "msg": "non-zero return code", "rc": 1, "start": "2021-01-13 10:09:09.607855", "stderr": "Error: [Errno 14] HTTPS Error 404 - Not Found", "stderr_lines": ["Error: [Errno 14] HTTPS Error 404 - Not Found"], "stdout": "Loaded plugins: copr, fastestmirror", "stdout_lines": ["Loaded plugins: copr, fastestmirror"]}
+failed: [localhost -> 35.212.161.146] (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01) => {"ansible_loop_var": "item", "changed": true, "cmd": "yum copr enable rpmsoftwaremanagement/dnf-nightly -y", "delta": "0:00:01.749129", "end": "2021-01-13 10:09:17.205927", "item": "ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01", "msg": "non-zero return code", "rc": 1, "start": "2021-01-13 10:09:15.456798", "stderr": "Error: [Errno 14] HTTPS Error 404 - Not Found", "stderr_lines": ["Error: [Errno 14] HTTPS Error 404 - Not Found"], "stdout": "Loaded plugins: copr, fastestmirror", "stdout_lines": ["Loaded plugins: copr, fastestmirror"]}
+failed: [localhost -> 35.212.176.120] (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01) => {"ansible_loop_var": "item", "changed": true, "cmd": "yum copr enable rpmsoftwaremanagement/dnf-nightly -y", "delta": "0:00:01.361332", "end": "2021-01-13 10:09:22.694707", "item": "ap2_rcloud_labs_west1_rancher_k8s_worker_01", "msg": "non-zero return code", "rc": 1, "start": "2021-01-13 10:09:21.333375", "stderr": "Error: [Errno 14] HTTPS Error 404 - Not Found", "stderr_lines": ["Error: [Errno 14] HTTPS Error 404 - Not Found"], "stdout": "Loaded plugins: copr, fastestmirror", "stdout_lines": ["Loaded plugins: copr, fastestmirror"]}
+failed: [localhost -> 35.212.196.18] (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02) => {"ansible_loop_var": "item", "changed": true, "cmd": "yum copr enable rpmsoftwaremanagement/dnf-nightly -y", "delta": "0:00:01.688444", "end": "2021-01-13 10:09:28.443129", "item": "ap2_rcloud_labs_west1_rancher_k8s_worker_02", "msg": "non-zero return code", "rc": 1, "start": "2021-01-13 10:09:26.754685", "stderr": "Error: [Errno 14] HTTPS Error 404 - Not Found", "stderr_lines": ["Error: [Errno 14] HTTPS Error 404 - Not Found"], "stdout": "Loaded plugins: copr, fastestmirror", "stdout_lines": ["Loaded plugins: copr, fastestmirror"]}
+...ignoring
+
+TASK [Remove yum-utils] ********************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Install dnf] *************************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Copy repo file with permissions] *****************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Install the latest version of google-sdk] ********************************
+ok: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+ok: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+ok: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+ok: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Check versions] **********************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Get docker repository] ***************************************************
+ok: [localhost]
+
+TASK [Download docker-ce.repo] *************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Install the latest version of docker-ce] *********************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Enable a docker-ce] ******************************************************
+changed: [localhost -> 35.212.154.136] => (item=ap2_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap2_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap2_rcloud_labs_west1_rancher_k8s_worker_02)
+
+TASK [Install some required libraries] *****************************************
+changed: [localhost -> 35.212.154.136] => (item=ap3_rcloud_labs_west1_rancher_k8s_master_01)
+changed: [localhost -> 35.212.161.146] => (item=ap3_rcloud_labs_west1_rancher_k8s_etcd_controlplane_01)
+changed: [localhost -> 35.212.176.120] => (item=ap3_rcloud_labs_west1_rancher_k8s_worker_01)
+changed: [localhost -> 35.212.196.18] => (item=ap3_rcloud_labs_west1_rancher_k8s_worker_02)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=29   changed=23   unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+

@@ -1,0 +1,19 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Get a list of all pod objects] *******************************************
+changed: [localhost] => (item={'dh_name': 'amar-ui', 'dh_tag': 'amarui-10', 'gar_name': 'amarbank-amarui', 'gar_tag': 'amarui-10'})
+
+TASK [debug] *******************************************************************
+ok: [localhost] => (item={'cmd': 'kubectl get deploy "amar-ui" -o jsonpath="{..image}"', 'stdout': 'ahmadfikri/tunaiku-rekol-landing-web:amarui-10', 'stderr': '', 'rc': 0, 'start': '2021-02-27 04:30:23.017295', 'end': '2021-02-27 04:30:23.122278', 'delta': '0:00:00.104983', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl get deploy "amar-ui" -o jsonpath="{..image}"', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['ahmadfikri/tunaiku-rekol-landing-web:amarui-10'], 'stderr_lines': [], 'failed': False, 'item': {'dh_name': 'amar-ui', 'dh_tag': 'amarui-10', 'gar_name': 'amarbank-amarui', 'gar_tag': 'amarui-10'}, 'ansible_loop_var': 'item'}) => {
+    "msg": [
+        "ahmadfikri/tunaiku-rekol-landing-web:amarui-10"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

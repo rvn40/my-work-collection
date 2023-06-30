@@ -1,0 +1,6 @@
+---
+
+rds_instances:
+  - cluster_id: "twibbonize-aurora-staging-cluster-cluster"
+    instance_id: "twibbonize-aurora-staging-cluster"
+    state: "stopped"

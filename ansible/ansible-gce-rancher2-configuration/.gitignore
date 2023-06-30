@@ -1,0 +1,6 @@
+files/serviceaccounts/*.json
+files/ssh_keys/*.pem
+files/ssl/*.pem
+files/ssl/*.key
+files/nginx/*.conf
+vars/private_vars.yml

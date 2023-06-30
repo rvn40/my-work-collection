@@ -1,0 +1,45 @@
+---
+
+- name: Install python-dnf
+  raw: pip3 install dnf
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Add the EPEL Repository
+  yum:
+    name: epel-release
+    state: present
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Install yum-plugin-copr and libselinux-python3
+  yum:
+    name: ["yum-plugin-copr", "libselinux-python3"]
+    state: present
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+  register: copr
+
+- name: Enable copr repo rpmsoftwaremanagement/dnf
+  shell: yum copr enable rpmsoftwaremanagement/dnf-nightly -y
+  when: copr.changed == True
+  ignore_errors: yes
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Remove yum-utils
+  yum:
+    name: yum-utils
+    state: absent
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Install dnf
+  yum:
+    name: "dnf"
+    state: present
+  delegate_to: "{{ item }}"
+  with_items:
+    - "{{ groups['all_python2'] }}"

@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/export.yml
+  tasks: 
+    - name: Activate service account
+      shell: gcloud auth activate-service-account "{{postgres.sa_name}}"  --key-file="{{postgres.sa_file_loc}}" --project="{{postgres.project_name}}"
+
+    - name:  Select service account
+      shell: gcloud config set account "{{postgres.sa_name}}"
+
+    - name: Export all db from dev funding sql instance
+      shell: gcloud sql export sql "{{postgres.instance_name}}" "gs://funding-development.appspot.com/{{csql_db_name.db_name}}.sql" --database="{{csql_db_name.db_name}}" --project="{{postgres.project_name}}"
+      with_items: "{{postgres.dbs}}"
+      loop_control:
+        loop_var: csql_db_name

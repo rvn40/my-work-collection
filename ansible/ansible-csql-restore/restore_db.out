@@ -1,0 +1,612 @@
+ansible-playbook 2.10.3
+  config file = /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/ansible.cfg
+  configured module search path = ['/home/rivan_amarbank/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.7/dist-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.3 (default, Jan 22 2021, 20:04:44) [GCC 8.3.0]
+Using /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/ansible.cfg as config file
+host_list declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+script declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+auto declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+Parsed /etc/ansible/hosts inventory source with ini plugin
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: create_db.yml ********************************************************
+1 plays in create_db.yml
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/dbs.yml'
+
+PLAY [localhost] ***************************************************************
+Read vars_file 'vars/dbs.yml'
+
+TASK [Gathering Facts] *********************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db.yml:3
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012 `" && echo ansible-tmp-1618544994.3058891-11722-255915453569012="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/setup.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmpsha89vo7 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012/AnsiballZ_setup.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012/AnsiballZ_setup.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-vnnigvitmwdawcvynrbfjpbwklrlglpd ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012/AnsiballZ_setup.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544994.3058891-11722-255915453569012/ > /dev/null 2>&1 && sleep 0'
+ok: [localhost]
+Read vars_file 'vars/dbs.yml'
+META: ran handlers
+Read vars_file 'vars/dbs.yml'
+
+TASK [Activate service account] ************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db.yml:8
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680 `" && echo ansible-tmp-1618544997.323-11788-81553802156680="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmp70jqfo7_ TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-lxwhxjpceoqvggmxyxwpyazbsridkjgs ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618544997.323-11788-81553802156680/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => {
+    "changed": true,
+    "cmd": "gcloud auth activate-service-account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"  --key-file=\"files/serviceaccounts/amarbank-sre-owner.json\" --project=\"funding-development\"",
+    "delta": "0:00:02.224716",
+    "end": "2021-04-16 03:50:00.749329",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud auth activate-service-account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"  --key-file=\"files/serviceaccounts/amarbank-sre-owner.json\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:49:58.524613",
+    "stderr": "Activated service account credentials for: [amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com]",
+    "stderr_lines": [
+        "Activated service account credentials for: [amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com]"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+Read vars_file 'vars/dbs.yml'
+
+TASK [Select service account] **************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db.yml:11
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709 `" && echo ansible-tmp-1618545001.0043652-11839-204063969704709="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmp5iuh54_1 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-jdnxpevjvdxumzehttxblqjaiukhlkhr ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545001.0043652-11839-204063969704709/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => {
+    "changed": true,
+    "cmd": "gcloud config set account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"",
+    "delta": "0:00:01.924601",
+    "end": "2021-04-16 03:50:03.489872",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud config set account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:01.565271",
+    "stderr": "Updated property [core/account].",
+    "stderr_lines": [
+        "Updated property [core/account]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+Read vars_file 'vars/dbs.yml'
+
+TASK [Restore databases] *******************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db.yml:14
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609 `" && echo ansible-tmp-1618545003.7600474-11883-21853577370609="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmp22u1oq0n TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ghczapwwagvaecvpndwnftbiazijapzo ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545003.7600474-11883-21853577370609/ > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_amarbank_friendlist_svc'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_amarbank_friendlist_svc\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_amarbank_friendlist_svc"
+    },
+    "delta": "0:00:07.216301",
+    "end": "2021-04-16 03:50:11.544246",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_amarbank_friendlist_svc\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:04.327945",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_amarbank_friendlist_svc].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_amarbank_friendlist_svc]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_amarbank_friendlist_svc\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_amarbank_friendlist_svc",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114 `" && echo ansible-tmp-1618545011.7617426-11883-180198503427114="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmpuu86seri TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-gcmrsndbhbcqrpqgtebarjfpbhxkstrb ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545011.7617426-11883-180198503427114/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_corebanking_svc'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_corebanking_svc\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_corebanking_svc"
+    },
+    "delta": "0:00:07.206111",
+    "end": "2021-04-16 03:50:19.488253",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_corebanking_svc\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:12.282142",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_corebanking_svc].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_corebanking_svc]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_corebanking_svc\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_corebanking_svc",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555 `" && echo ansible-tmp-1618545019.5431418-11883-6095718068555="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmpugjxxm2w TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-rpdmncdjiipppfiygfptqmlrvbtskbhb ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545019.5431418-11883-6095718068555/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_csr_dashboard_api'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_csr_dashboard_api\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_csr_dashboard_api"
+    },
+    "delta": "0:00:08.227617",
+    "end": "2021-04-16 03:50:28.285372",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_csr_dashboard_api\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:20.057755",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_csr_dashboard_api].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_csr_dashboard_api]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_csr_dashboard_api\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_csr_dashboard_api",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438 `" && echo ansible-tmp-1618545028.4802055-11883-131458817305438="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmpqbzc2i5t TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-qarebcjiucoshvkmgeuzggkdeleijmbt ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545028.4802055-11883-131458817305438/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_csr_dashboard_api_file'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_csr_dashboard_api_file\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_csr_dashboard_api_file"
+    },
+    "delta": "0:00:07.074851",
+    "end": "2021-04-16 03:50:36.081100",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_csr_dashboard_api_file\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:29.006249",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_csr_dashboard_api_file].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_csr_dashboard_api_file]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_csr_dashboard_api_file\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_csr_dashboard_api_file",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726 `" && echo ansible-tmp-1618545036.271644-11883-49209901013726="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmphrcvml5e TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-mgtaxelvwaflsflowfjtufztranosdjr ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545036.271644-11883-49209901013726/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_notification_adapter'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_notification_adapter\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_notification_adapter"
+    },
+    "delta": "0:00:08.272457",
+    "end": "2021-04-16 03:50:45.058121",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_notification_adapter\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:36.785664",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_notification_adapter].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_notification_adapter]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_notification_adapter\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_notification_adapter",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233 `" && echo ansible-tmp-1618545045.2491934-11883-224737254960233="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmph9e7cnf0 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-zlbgoxpxljfbttvobuxtwqucrcusmdgs ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545045.2491934-11883-224737254960233/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_senyumku_depo'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_senyumku_depo\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_senyumku_depo"
+    },
+    "delta": "0:00:08.256821",
+    "end": "2021-04-16 03:50:54.047988",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_senyumku_depo\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:45.791167",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_senyumku_depo].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_senyumku_depo]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_senyumku_depo\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_senyumku_depo",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260 `" && echo ansible-tmp-1618545054.2375596-11883-257854374996260="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmp9o9fz0lf TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-zriorinixtcnbyyjzyzcxcqlsrnsoxhr ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545054.2375596-11883-257854374996260/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_services_apps'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_services_apps\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_services_apps"
+    },
+    "delta": "0:00:07.486961",
+    "end": "2021-04-16 03:51:02.250036",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_services_apps\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:50:54.763075",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_services_apps].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_services_apps]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_services_apps\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_services_apps",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756 `" && echo ansible-tmp-1618545062.3160436-11883-73810104416756="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmpq0_1ics2 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ehqgrnjiddrwkpwsyerxawjcsvvedxgw ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545062.3160436-11883-73810104416756/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_services_apps_files'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_services_apps_files\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_services_apps_files"
+    },
+    "delta": "0:00:07.238951",
+    "end": "2021-04-16 03:51:10.257092",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_services_apps_files\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:51:03.018141",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_services_apps_files].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_services_apps_files]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_services_apps_files\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_services_apps_files",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019 `" && echo ansible-tmp-1618545070.3219283-11883-264250236556019="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmpynw0m5pk TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-xbooygnbrckkuslkbecngkjrxiirxeim ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545070.3219283-11883-264250236556019/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_tnk_ves'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_tnk_ves\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_tnk_ves"
+    },
+    "delta": "0:00:06.836008",
+    "end": "2021-04-16 03:51:17.810733",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_tnk_ves\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:51:10.974725",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_tnk_ves].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_tnk_ves]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_tnk_ves\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_tnk_ves",
+        "project: funding-development"
+    ]
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582 `" && echo ansible-tmp-1618545078.001149-11883-75228092873582="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-11700kbl7erx0/tmp31a52pi4 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ztklxnfchlbxkfvaxuzqrxhubmmdduif ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618545078.001149-11883-75228092873582/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'db_name': 'dev_transaction_limit_svc'}) => {
+    "ansible_loop_var": "csql_db_name",
+    "changed": true,
+    "cmd": "gcloud sql databases create \"dev_transaction_limit_svc\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+    "csql_db_name": {
+        "db_name": "dev_transaction_limit_svc"
+    },
+    "delta": "0:00:06.185588",
+    "end": "2021-04-16 03:51:24.748195",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql databases create \"dev_transaction_limit_svc\" --instance=\"development-funding-dumpers\" --charset=\"UTF8\" --collation=\"en_US.UTF8\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:51:18.562607",
+    "stderr": "Creating Cloud SQL database...\n.done.\nCreated database [dev_transaction_limit_svc].",
+    "stderr_lines": [
+        "Creating Cloud SQL database...",
+        ".done.",
+        "Created database [dev_transaction_limit_svc]."
+    ],
+    "stdout": "charset: UTF8\ncollation: en_US.UTF8\ninstance: development-funding-dumpers\nname: dev_transaction_limit_svc\nproject: funding-development",
+    "stdout_lines": [
+        "charset: UTF8",
+        "collation: en_US.UTF8",
+        "instance: development-funding-dumpers",
+        "name: dev_transaction_limit_svc",
+        "project: funding-development"
+    ]
+}
+Read vars_file 'vars/dbs.yml'
+META: ran handlers
+Read vars_file 'vars/dbs.yml'
+META: ran handlers
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

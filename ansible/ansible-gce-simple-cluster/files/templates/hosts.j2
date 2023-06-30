@@ -1,0 +1,55 @@
+[local]
+localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python3
+
+
+[all_python3]
+{% for item in cluster_members.results : %}
+ap3_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python3 
+{% endfor %}
+
+[all_python2]
+{% for item in cluster_members.results : %}
+ap2_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python 
+{% endfor %}
+
+[rancher_k8s_master]
+{% for item in cluster_members.results : %}
+{% if item.vms_item[1].role == "master" %}
+rkmp3_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python3 
+{% endif %}
+{% endfor %}
+
+[rancher_k8s_master_python2]
+{% for item in cluster_members.results : %}
+{% if item.vms_item[1].role == "master" %}
+rkmp2_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python 
+{% endif %}
+{% endfor %}
+
+[rancher_k8s_etcd_controlplane]
+{% for item in cluster_members.results : %}
+{% if item.vms_item[1].role == "etcd-controlplane" %}
+rkecp3_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python3 
+{% endif %}
+{% endfor %}
+
+[rancher_k8s_etcd_controlplane_python2]
+{% for item in cluster_members.results : %}
+{% if item.vms_item[1].role == "etcd-controlplane" %}
+rkecp2_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python 
+{% endif %}
+{% endfor %}
+
+[rancher_k8s_worker]
+{% for item in cluster_members.results : %}
+{% if item.vms_item[1].role == "worker" %}
+rkwp3_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python3 
+{% endif %}
+{% endfor %}
+
+[rancher_k8s_worker_python2]
+{% for item in cluster_members.results : %}
+{% if item.vms_item[1].role == "worker" %}
+rkwp2_{{item.name |replace("-", "_")}} ansible_connection=ssh ansible_host={{item.networkInterfaces[0].networkIP}} ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file={{users.ssh[0].key_directory}}{{users.ssh[0].key_filename}} ansible_user={{users.ssh[0].username}} ansible_python_interpreter=/usr/bin/python 
+{% endif %}
+{% endfor %}

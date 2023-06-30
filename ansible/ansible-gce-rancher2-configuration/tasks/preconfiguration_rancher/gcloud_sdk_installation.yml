@@ -1,0 +1,27 @@
+---
+
+- name: Copy repo file with permissions
+  copy:
+    src: files/templates/google-cloud-sdk.repo.j2
+    dest: /etc/yum.repos.d/google-cloud-sdk.repo
+    mode: '0644'
+  delegate_to: "{{ delegated_hosts }}"
+  loop: "{{ groups['all_python2'] }}"
+  loop_control:
+    loop_var: delegated_hosts
+
+- name: Install the latest version of google-sdk
+  dnf:
+    name:
+      - google-cloud-sdk
+    state: latest
+  delegate_to: "{{ delegated_hosts }}"
+  loop: "{{ groups['all_python2'] }}"
+  loop_control:
+    loop_var: delegated_hosts
+
+- name: Check versions
+  shell: "gcloud -v"
+  delegate_to: "{{ item }}"
+  with_items: "{{ groups['all_python2'] }}"
+  

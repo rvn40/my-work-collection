@@ -1,0 +1,9 @@
+---
+
+- hosts: localhost
+  become: yes
+  become_user: rivan_amarbank
+  vars_files:
+    - vars/private_vars.yml
+  tasks: 
+    - include: tasks/set_images.yml

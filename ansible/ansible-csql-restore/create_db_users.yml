@@ -1,0 +1,19 @@
+---
+
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/dbs.yml
+    - vars/db_users.yml
+  tasks: 
+    - name: Activate service account
+      shell: gcloud auth activate-service-account "{{postgres.sa_name}}"  --key-file="{{postgres.sa_file_loc}}" --project="{{postgres.project_name}}"
+
+    - name:  Select service account
+      shell: gcloud config set account "{{postgres.sa_name}}"
+      
+    - name: Restore databases users
+      shell: gcloud sql users create "{{csql_db_users.name}}" --instance="{{postgres.instance_name}}" --password="{{csql_db_users.pass}}" --project="{{postgres.project_name}}"
+      with_items: "{{postgres.users}}"
+      loop_control:
+        loop_var: csql_db_users

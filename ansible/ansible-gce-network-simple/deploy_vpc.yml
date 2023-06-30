@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/vars.yml
+  tasks: 
+    - include: tasks/vpc.yml
+    - include: tasks/subnetwork.yml
+    - include: tasks/firewall.yml

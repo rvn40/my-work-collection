@@ -1,0 +1,41 @@
+---
+
+- name: Get docker repository
+  uri:
+    url: "https://download.docker.com/linux/centos/docker-ce.repo"
+    follow_redirects: none
+    method: GET
+  register: _get_status
+  until: _get_status.status == 200
+
+- name: Download docker-ce.repo
+  get_url:
+    url: "https://download.docker.com/linux/centos/docker-ce.repo"
+    dest: /etc/yum.repos.d/docker-ce.repo
+    mode: '0644'
+  delegate_to: "{{ delegated_hosts }}"
+  loop: "{{ groups['all_python2'] }}"
+  loop_control:
+    loop_var: delegated_hosts
+  register: _get_docker
+  when: _get_status.status == 200
+
+- name: Install the latest version of docker-ce
+  dnf:
+    name:
+      - docker-ce
+    state: latest
+  delegate_to: "{{ delegated_hosts }}"
+  loop: "{{ groups['all_python2'] }}"
+  loop_control:
+    loop_var: delegated_hosts
+
+- name: Enable a docker-ce
+  systemd:
+    name: docker.service
+    state: started
+    enabled: yes
+  delegate_to: "{{ delegated_hosts }}"
+  loop: "{{ groups['all_python2'] }}"
+  loop_control:
+    loop_var: delegated_hosts

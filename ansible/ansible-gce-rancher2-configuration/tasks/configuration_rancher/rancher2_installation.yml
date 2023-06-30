@@ -1,0 +1,38 @@
+---
+
+# letak mount rancher data value di dalam conatiner dimana
+
+
+- name: Create data directories
+  file:
+    path: "/home/{{users.ssh[0].username}}/{{item}}"
+    mode: '0755'
+    state: directory
+  with_items:
+    - rancher2
+
+- name: Get info of rancher container
+  community.general.docker_container_info:
+    name: rancher_master_01
+  register: masterRancher
+
+- name: Remove existing rancher container
+  community.general.docker_container:
+    name: rancher_master_01
+    state: absent
+    force_kill: yes
+  when: masterRancher.exists
+
+- name: Create a rancher container
+  community.general.docker_container:
+    name: rancher_master_01
+    image: rancher/rancher:stable
+    state: started
+    restart_policy: unless-stopped
+    detach: yes
+    privileged: yes
+    networks:
+      - name: "{{  dNetwork.network.Name }}"
+    ports:
+      - 80:80
+  when: dNetwork.exists

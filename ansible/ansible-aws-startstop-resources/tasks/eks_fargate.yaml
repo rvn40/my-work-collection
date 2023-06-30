@@ -1,0 +1,50 @@
+---
+
+- name: Modify a HPA object
+  kubernetes.core.k8s:
+    host: "{{ k8sclusters.cluster_endpoint }}"
+    api_key:  "{{ k8s_token }}"
+    state: present
+    validate_certs: no
+    definition:
+      apiVersion: autoscaling/v2beta2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        namespace: "{{ item.0.name }}"
+        name: "{{ item.1.hpa }}"
+      spec:
+        minReplicas: 1
+  with_subelements:
+    - "{{ k8sclusters.namespaces }}"
+    - resources
+  when: ( ( ((global_config.state != '') | ternary(global_config.state, "stopped")) == "stopped" ) & item.1.hpa != "twibbonize-konga-hpa" )
+  register: hpa_reg
+
+- name: Setting host facts using given argument
+  ansible.builtin.set_fact:
+    replicas: 0
+  when: ( ((global_config.state != '') | ternary(global_config.state, "stopped")) == "stopped" )
+
+- name: Setting host facts using given argument
+  ansible.builtin.set_fact:
+    replicas: 1
+  when: ( ((global_config.state != '') | ternary(global_config.state, "running")) == "running" )
+
+- name: Modify a deployment object
+  kubernetes.core.k8s:
+    host: "{{ k8sclusters.cluster_endpoint }}"
+    api_key: "{{ k8s_token }}"
+    state: present
+    validate_certs: no
+    definition:
+      apiVersion: v1
+      kind: Deployment
+      metadata:
+        namespace: "{{ item.0.name }}"
+        name: "{{ item.1.deployment }}"
+      spec:
+        replicas: "{{ replicas }}"
+  with_subelements:
+    - "{{ k8sclusters.namespaces }}"
+    - resources
+  register: deployment_reg

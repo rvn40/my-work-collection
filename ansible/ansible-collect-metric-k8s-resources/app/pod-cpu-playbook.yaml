@@ -1,0 +1,222 @@
+---
+
+- hosts: localhost
+  become: yes
+  become_user: rivan
+  vars_files:
+    - vars.yaml
+  tasks: 
+  ###### Cluster
+    - name: Use Context
+      shell: kubectl config use-context "{{clusters[0].name}}"
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[0].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[0].stdout}}"
+
+    #- name: Write json_data to file to debug
+    #  copy: content="{{ json_data }}" dest=/home/rivan/Documents/works/repositories/github/rvn40/ansible-collect-metric-k8s-resources/app/file.json
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[0].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[1].stdout}}"
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[0].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[2].stdout}}"
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[0].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[3].stdout}}"
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[0].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[4].stdout}}"
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    
+  ###### Cluster
+    - name: Use Context
+      shell: kubectl config use-context "{{clusters[1].name}}"
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[1].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[0].stdout}}"
+    
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[1].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[1].stdout}}"
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}"    
+
+
+  ###### Cluster
+    - name: Use Context
+      shell: kubectl config use-context "{{clusters[2].name}}"
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[2].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[0].stdout}}"
+    
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 
+
+    ######## Namespace
+    - name: Get cpu and memory of pods
+      shell: |
+        kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/{{item}}/pods" 
+      with_items:
+        - "{{clusters[2].namespaces}}"
+      register: pods
+
+    - name: Set Facts in Json
+      set_fact:
+        json_data: "{{pods.results[1].stdout}}"
+
+    - name: Insert query to table in db 
+      community.postgresql.postgresql_query:
+        login_host: "10.244.0.12"
+        port: "5432"
+        login_user: "dev_auth"
+        login_password: "GTffzL9z5BNGhBD8GrCRFnRL"
+        db: metrics_collection_db
+        query: INSERT INTO cpu_memory(pod_name, cpu, memory, date_time, pod_namespace) VALUES ('{{ (item["metadata"]["name"]  | string) }}', '{{ (item["containers"][0]["usage"]["cpu"] | replace("n","") | int) }}', '{{ (item["containers"][0]["usage"]["memory"] | replace("Ki","") | int) }}', '{{ ansible_date_time.date }} {{ ansible_date_time.time }}', '{{ (item["metadata"]["namespace"]  | string) }}')
+      loop: "{{ json_data['items'] | flatten(1) }}" 

@@ -1,0 +1,21 @@
+---
+
+clusters:
+  - name: gke_amarbank-production_asia-southeast2_ab-p-sea2-gke-01
+    endpoint: "https://34.101.109.118"
+    namespaces:
+      - "prod-amarbank-be"
+      - "prod-amarbank-fe"
+      - "prod-amarbank-data"
+      - "prod-amarbank-auth"
+      - "prod-swara"
+  - name: gke_lending-production-280408_asia-southeast2_ab-lnd-p-sea2-gke-01
+    endpoint: "https://34.101.81.158"
+    namespaces:
+      - "prod-lending-be"
+      - "prod-lending-fe"
+  - name: gke_funding-production_asia-southeast2_ab-fnd-p-sea2-gke-01
+    endpoint: "https://34.101.183.140"
+    namespaces:
+      - "prod-funding-be"
+      - "prod-funding-fe"

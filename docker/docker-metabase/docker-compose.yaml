@@ -1,0 +1,43 @@
+version: '3.3'
+
+
+volumes:
+  db-data-twib-mysql-metabase:
+    name: db-data-twib-mysql-metabase
+    external: true
+  db-data-twib-metabase:
+    name: db-data-twib-metabase
+    external: true
+
+services:
+  mysql-db:
+    image: mysql:8.0.28
+    container_name: metabase-db-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    volumes:
+    - db-data-twib-mysql-metabase:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql-sp-admin
+      MYSQL_DATABASE: metabase-default
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "zeddspectru"
+  metabase-secrets:
+    image: metabase/metabase:v0.41.1
+    container_name: metabase-01
+    hostname: metabase-host-01
+    restart: unless-stopped
+    volumes:
+    - db-data-twib-metabase:/dev/random:ro
+    ports:
+      - 3000:3000
+    environment:
+      MB_DB_TYPE: "mysql"
+      MB_DB_DBNAME: "metabase-default"
+      MB_DB_PORT: "3306"
+      MB_DB_USER: "admin"
+      MB_DB_PASS: "zeddspectru"
+      MB_DB_HOST: "172.20.4.177"
+      JAVA_TIMEZONE: "Asia/Jakarta"

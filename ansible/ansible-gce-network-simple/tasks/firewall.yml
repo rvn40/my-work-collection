@@ -1,0 +1,19 @@
+---
+
+- name: Create a Firewall Rule
+  google.cloud.gcp_compute_firewall:
+    name: "{{general.prefix_first}}{{general.prefix_second}}-{{vpc.name}}-{{fw_rule.name}}"
+    allowed:
+    - ip_protocol: "{{fw_rule.protocol}}"
+      ports: "{{fw_rule.port}}"
+    target_tags: "{{fw_rule.target_tags}}"
+    source_ranges: "{{fw_rule.source_ranges}}"
+    network: "{{ rg_network }}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+    state: present
+  with_items: "{{firewall}}"
+  loop_control:
+    loop_var: fw_rule
+  register: rg_firewall

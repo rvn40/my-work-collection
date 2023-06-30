@@ -1,0 +1,43 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Get a list of all pod objects] *******************************************
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-kyc-web', 'dh_tag': 'development-07e4df3', 'gar_name': 'tunaiku-rekol-kyc-web', 'gar_tag': 'development-07e4df3'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-profile-management-web', 'dh_tag': 'development-bf855bf', 'gar_name': 'tunaiku-rekol-profile-management-web', 'gar_tag': 'development-bf855bf'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-registration-web', 'dh_tag': 'development-1bf19fc', 'gar_name': 'tunaiku-rekol-registration-web', 'gar_tag': 'development-1bf19fc'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-support-web', 'dh_tag': 'development-5ca01cc', 'gar_name': 'tunaiku-rekol-support-web', 'gar_tag': 'development-5ca01cc'})
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-trx-web', 'dh_tag': 'development-8ae8b49', 'gar_name': 'tunaiku-rekol-trx-web', 'gar_tag': 'development-8ae8b49'})
+
+TASK [debug] *******************************************************************
+ok: [localhost] => (item={'cmd': 'kubectl get deploy "tunaiku-rekol-kyc-web" -o jsonpath="{..image}"', 'stdout': 'ahmadfikri/tunaiku-rekol-kyc-web:development-07e4df3', 'stderr': '', 'rc': 0, 'start': '2020-12-19 12:25:34.746445', 'end': '2020-12-19 12:25:34.867357', 'delta': '0:00:00.120912', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl get deploy "tunaiku-rekol-kyc-web" -o jsonpath="{..image}"', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['ahmadfikri/tunaiku-rekol-kyc-web:development-07e4df3'], 'stderr_lines': [], 'failed': False, 'item': {'dh_name': 'tunaiku-rekol-kyc-web', 'dh_tag': 'development-07e4df3', 'gar_name': 'tunaiku-rekol-kyc-web', 'gar_tag': 'development-07e4df3'}, 'ansible_loop_var': 'item'}) => {
+    "msg": [
+        "ahmadfikri/tunaiku-rekol-kyc-web:development-07e4df3"
+    ]
+}
+ok: [localhost] => (item={'cmd': 'kubectl get deploy "tunaiku-rekol-profile-management-web" -o jsonpath="{..image}"', 'stdout': 'ahmadfikri/tunaiku-rekol-profile-management-web:development-bf855bf', 'stderr': '', 'rc': 0, 'start': '2020-12-19 12:25:35.057156', 'end': '2020-12-19 12:25:35.160558', 'delta': '0:00:00.103402', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl get deploy "tunaiku-rekol-profile-management-web" -o jsonpath="{..image}"', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['ahmadfikri/tunaiku-rekol-profile-management-web:development-bf855bf'], 'stderr_lines': [], 'failed': False, 'item': {'dh_name': 'tunaiku-rekol-profile-management-web', 'dh_tag': 'development-bf855bf', 'gar_name': 'tunaiku-rekol-profile-management-web', 'gar_tag': 'development-bf855bf'}, 'ansible_loop_var': 'item'}) => {
+    "msg": [
+        "ahmadfikri/tunaiku-rekol-profile-management-web:development-bf855bf"
+    ]
+}
+ok: [localhost] => (item={'cmd': 'kubectl get deploy "tunaiku-rekol-registration-web" -o jsonpath="{..image}"', 'stdout': 'ahmadfikri/tunaiku-rekol-registration-web:development-1bf19fc', 'stderr': '', 'rc': 0, 'start': '2020-12-19 12:25:35.358704', 'end': '2020-12-19 12:25:35.464867', 'delta': '0:00:00.106163', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl get deploy "tunaiku-rekol-registration-web" -o jsonpath="{..image}"', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['ahmadfikri/tunaiku-rekol-registration-web:development-1bf19fc'], 'stderr_lines': [], 'failed': False, 'item': {'dh_name': 'tunaiku-rekol-registration-web', 'dh_tag': 'development-1bf19fc', 'gar_name': 'tunaiku-rekol-registration-web', 'gar_tag': 'development-1bf19fc'}, 'ansible_loop_var': 'item'}) => {
+    "msg": [
+        "ahmadfikri/tunaiku-rekol-registration-web:development-1bf19fc"
+    ]
+}
+ok: [localhost] => (item={'cmd': 'kubectl get deploy "tunaiku-rekol-support-web" -o jsonpath="{..image}"', 'stdout': 'keycloak/keycloak-gatekeeper:7.0.0 ahmadfikri/tunaiku-rekol-support-web:development-5ca01cc', 'stderr': '', 'rc': 0, 'start': '2020-12-19 12:25:35.654659', 'end': '2020-12-19 12:25:35.760779', 'delta': '0:00:00.106120', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl get deploy "tunaiku-rekol-support-web" -o jsonpath="{..image}"', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['keycloak/keycloak-gatekeeper:7.0.0 ahmadfikri/tunaiku-rekol-support-web:development-5ca01cc'], 'stderr_lines': [], 'failed': False, 'item': {'dh_name': 'tunaiku-rekol-support-web', 'dh_tag': 'development-5ca01cc', 'gar_name': 'tunaiku-rekol-support-web', 'gar_tag': 'development-5ca01cc'}, 'ansible_loop_var': 'item'}) => {
+    "msg": [
+        "keycloak/keycloak-gatekeeper:7.0.0 ahmadfikri/tunaiku-rekol-support-web:development-5ca01cc"
+    ]
+}
+ok: [localhost] => (item={'cmd': 'kubectl get deploy "tunaiku-rekol-trx-web" -o jsonpath="{..image}"', 'stdout': 'ahmadfikri/tunaiku-rekol-trx-web:development-8ae8b49', 'stderr': '', 'rc': 0, 'start': '2020-12-19 12:25:35.957090', 'end': '2020-12-19 12:25:36.056176', 'delta': '0:00:00.099086', 'changed': True, 'invocation': {'module_args': {'_raw_params': 'kubectl get deploy "tunaiku-rekol-trx-web" -o jsonpath="{..image}"', '_uses_shell': True, 'warn': True, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}, 'stdout_lines': ['ahmadfikri/tunaiku-rekol-trx-web:development-8ae8b49'], 'stderr_lines': [], 'failed': False, 'item': {'dh_name': 'tunaiku-rekol-trx-web', 'dh_tag': 'development-8ae8b49', 'gar_name': 'tunaiku-rekol-trx-web', 'gar_tag': 'development-8ae8b49'}, 'ansible_loop_var': 'item'}) => {
+    "msg": [
+        "ahmadfikri/tunaiku-rekol-trx-web:development-8ae8b49"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

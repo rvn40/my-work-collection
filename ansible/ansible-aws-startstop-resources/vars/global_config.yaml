@@ -1,0 +1,5 @@
+---
+
+global_config:
+  region: "ap-southeast-1"
+  state: "stopped" # Let it empty for ec2 and rds level state and fill it with "running" or "stopped" for global scope instructions

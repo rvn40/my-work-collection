@@ -1,0 +1,104 @@
+---
+
+- name: Run update yum and download some packages
+  raw: sudo yum -y update && sudo yum -y groupinstall "Development Tools" && sudo yum -y install openssl-devel bzip2-devel libffi-devel sqlite-devel wget curl git
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Run gcc version
+  raw: gcc --version
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Run command download python3 
+  raw: curl -o "/tmp/Python-{{python.version}}.tgz" "https://www.python.org/ftp/python/{{python.version}}/Python-{{python.version}}.tgz"
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Remove SSH-keygen
+  raw: sudo echo "" > "$HOME/.ssh/known_hosts"
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  with_items: "{{ groups['all_python2'] }}"
+
+- name: Extract python3 package 
+  raw: cd /tmp && tar xvf Python-{{python.version}}.tgz
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Running configure script
+  raw: cd /tmp/Python-{{python.version}}/ && sudo ./configure --enable-optimizations --enable-loadable-sqlite-extensions
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Running the make install
+  raw: cd /tmp/Python-{{python.version}}/ && sudo make altinstall
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Check if rules python3 symlink exists
+  stat: 
+    path: /usr/bin/python3
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+  register: stat_py3
+
+- name: Check if rules pip3 symlink exists
+  stat: 
+    path: /usr/bin/pip3
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+  register: stat_pippy3
+
+#- debug:
+#    var: stat_py3
+
+- name: Create symlink python3
+  raw: sudo ln -s /usr/local/bin/python3.9 /usr/bin/python3
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item.item }}"
+  loop: "{{ stat_py3.results }}"
+  when: item.stat.exists == false
+
+- name: Create symlink pip3
+  raw: sudo ln -s /usr/local/bin/pip3.9 /usr/bin/pip3
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item.item }}"
+  loop: "{{ stat_pippy3.results }}"
+  when: item.stat.exists == false
+
+- name: Remove SSH-keygen
+  raw: sudo echo "" > "$HOME/.ssh/known_hosts"
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  with_items: "{{ groups['all_python2'] }}"
+
+- name: Run python3 version
+  raw: python3 --version
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"
+
+- name: Run pip3 version
+  raw: pip3 --version
+  args:
+    executable: /bin/bash
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python2'] }}"

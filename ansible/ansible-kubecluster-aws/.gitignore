@@ -1,0 +1,3 @@
+# Secrets and sensitive files
+files/secrets/*.pem
+files/*.log

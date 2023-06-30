@@ -1,0 +1,3 @@
+files/serviceaccounts/*.json
+files/ssh_keys/*.pem
+vars/private_vars.yml

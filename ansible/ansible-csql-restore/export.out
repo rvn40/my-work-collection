@@ -1,0 +1,27 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Activate service account] ************************************************
+changed: [localhost]
+
+TASK [Select service account] **************************************************
+changed: [localhost]
+
+TASK [Export all db from dev funding sql instance] *****************************
+changed: [localhost] => (item={'db_name': 'dev_amarbank_friendlist_svc'})
+changed: [localhost] => (item={'db_name': 'dev_corebanking_svc'})
+changed: [localhost] => (item={'db_name': 'dev_csr_dashboard_api'})
+changed: [localhost] => (item={'db_name': 'dev_csr_dashboard_api_file'})
+changed: [localhost] => (item={'db_name': 'dev_notification_adapter'})
+changed: [localhost] => (item={'db_name': 'dev_senyumku_depo'})
+changed: [localhost] => (item={'db_name': 'dev_services_apps'})
+changed: [localhost] => (item={'db_name': 'dev_services_apps_files'})
+changed: [localhost] => (item={'db_name': 'dev_tnk_ves'})
+changed: [localhost] => (item={'db_name': 'dev_transaction_limit_svc'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

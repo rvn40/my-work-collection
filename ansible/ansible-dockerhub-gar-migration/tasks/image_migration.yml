@@ -1,0 +1,45 @@
+---
+
+- name: Log into DockerHub
+  docker_login:
+    username: "{{dockerhub.username}}"
+    password: "{{dockerhub.password}}"
+
+- name: Pull an image
+  community.general.docker_image:
+    name: "{{dockerhub.dir}}{{image.dh_name}}:{{image.dh_tag}}"
+    source: pull
+  with_items: "{{migrated.images}}"
+  loop_control:
+    loop_var: image
+
+- name: Log out of DockerHub
+  docker_login:
+    state: absent
+
+- name: Switch user google-sdk
+  shell: "gcloud auth activate-service-account {{serviceaccounts[0].email}} --key-file=\"{{serviceaccounts[0].json_directory}}{{serviceaccounts[0].json_name}}\" "
+
+- name: Generate token
+  shell: "gcloud auth print-access-token"
+  register: token
+
+- name: Log into private repository
+  docker_login:
+    registry_url: "{{artifact_registry.url}}"
+    username: oauth2accesstoken
+    password: "{{ token.stdout_lines[0] }}"
+
+- name: Tag and push it to a private repo
+  community.general.docker_image:
+    name: "{{dockerhub.dir}}{{image.dh_name}}:{{image.dh_tag}}"
+    repository: "{{artifact_registry.url}}/{{artifact_registry.dir}}{{image.gar_name}}:{{image.gar_tag}}"
+    push: yes
+    source: local
+  with_items: "{{migrated.images}}"
+  loop_control:
+    loop_var: image
+
+- name: Log out of private repo
+  docker_login:
+    state: absent

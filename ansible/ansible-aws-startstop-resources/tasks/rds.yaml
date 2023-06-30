@@ -1,0 +1,57 @@
+---
+
+- name: Python code for stop RDS
+  ansible.builtin.command: /usr/bin/python3
+  args:
+    stdin: |
+      import boto3
+
+      RDS = boto3.client('rds',aws_access_key_id="{{ secret.access_key }}",aws_secret_access_key="{{ secret.secret_access_key }}",region_name=region)
+      region="{{ global_config.region }}"
+      cluster_id="{{ rds.cluster_id }}"
+      response = client.describe_db_clusters(DBClusterIdentifier=cluster_id)
+
+      for resp in response['DBClusters']:
+        db_cluster_arn = resp['DBClusterArn']
+        db_cluster_status = resp['Status']
+
+        if db_cluster_status == 'available':
+          print("shutting down %s " % db_cluster_arn)
+          RDS.stop_db_cluster(DBClusterIdentifier=cluster_id)
+        elif db_cluster_status == 'stopped':
+          print("The db cluster already in " + db_cluster_status + " status!")
+        else:
+          print("The database is " + db_cluster_status + " status!")
+  with_items: "{{ rds_instances }}"
+  loop_control:
+    loop_var: rds
+  when: ( ((global_config.state != '') | ternary(global_config.state, rds.state))  == "stopped")
+  register: rds_stop_reg
+
+- name: Python code for start RDS
+  ansible.builtin.command: /usr/bin/python3
+  args:
+    stdin: |
+      import boto3
+
+      RDS = boto3.client('rds',aws_access_key_id="{{ secret.access_key }}",aws_secret_access_key="{{ secret.secret_access_key }}",region_name=region)
+      region="{{ global_config.region }}"
+      cluster_id="{{ rds.cluster_id }}"
+      response = client.describe_db_clusters(DBClusterIdentifier=cluster_id)
+
+      for resp in response['DBClusters']:
+        db_cluster_arn = resp['DBClusterArn']
+        db_cluster_status = resp['Status']
+
+        if db_cluster_status == 'available':
+          print("The db cluster already in " + db_cluster_status + " status!")
+        elif db_cluster_status == 'stopped':
+          print("booting up %s " % db_cluster_arn)
+          RDS.start_db_cluster(DBClusterIdentifier=cluster_id)
+        else:
+          print("The database is " + db_cluster_status + " status!")
+  with_items: "{{ rds_instances }}"
+  loop_control:
+    loop_var: rds
+  when: ( ((global_config.state != '') | ternary(global_config.state, rds.state))  == "running")
+  register: rds_run_reg

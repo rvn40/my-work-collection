@@ -1,0 +1,50 @@
+---
+
+- debug:
+    msg: "{{ vars }}"
+  when: r_master == "ap2_rcloud_labs_west1_rancher_k8s_master_01"
+  loop: "{{ groups['all_python2'] }}"
+  loop_control:
+    loop_var: r_master
+
+#- name: List DNS Records
+#  uri:
+#    url: https://api.cloudflare.com/client/v4/zones/6176a2200d5b5039c051a1daa5221a14/dns_records?name=ajarivpn2.fourtyspace.com
+#    method: GET
+#    body_format: json
+#    headers:
+#      X-Auth-Email: "kebonce40@gmail.com"
+#      X-Auth-Key: "1301a2f024940d2043f8469e6be8856f1dd0c"
+#  register: _dnsList
+#
+#- debug:
+#    msg: "{{ _dnsList.json.result[0].id }}"
+##  when: item.name == "ajarivpn2.fourtyspace.com"
+##  with_items: "{{ _dnsList.json.result }}"
+#
+#- name: Delete DNS Records
+#  uri:
+#    url: "https://api.cloudflare.com/client/v4/zones/6176a2200d5b5039c051a1daa5221a14/dns_records/{{ _dnsList.json.result[0].id }}"
+#    method: DELETE
+#    body_format: json
+#    headers:
+#      X-Auth-Email: "kebonce40@gmail.com"
+#      X-Auth-Key: "1301a2f024940d2043f8469e6be8856f1dd0c"
+
+#- name: Add records to dns server
+#  uri:
+#    url: https://api.cloudflare.com/client/v4/zones/6176a2200d5b5039c051a1daa5221a14/dns_records
+#    method: POST
+#    body_format: json
+#    status_code: [200, 202]
+#    return_content: true
+#    headers:
+#      X-Auth-Email: "kebonce40@gmail.com"
+#      X-Auth-Key: "1301a2f024940d2043f8469e6be8856f1dd0c"
+#    body:
+#      type: A
+#      name: ajarivpn2.fourtyspace.com
+#      content: 35.212.176.120
+#      ttl: 120
+#      priority: 10 
+#      proxied: false

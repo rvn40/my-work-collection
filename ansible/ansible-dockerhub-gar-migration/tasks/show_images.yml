@@ -1,0 +1,11 @@
+---
+
+
+- name: Get a list of all pod objects
+  shell: kubectl get deploy "{{item.dh_name}}" -o jsonpath="{..image}"
+  with_items: "{{migrated.images}}"
+  register: deploy_list
+
+- debug:
+    msg: "{{item.stdout_lines}}"
+  with_items: "{{deploy_list.results}}"

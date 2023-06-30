@@ -1,0 +1,16 @@
+---
+
+general:
+  prefix_first: "rcloud"
+  prefix_second: "labs"
+  region_default: "us-west1"
+  wild_world_range: "0.0.0.0/0"
+buckets:
+  - name: "bucket"
+    properties:
+      - index: "01"
+        storage_class: "MULTI_REGIONAL"
+        location: "US"
+bucket_acls:
+  - role: "OWNER"
+#    entity: ""

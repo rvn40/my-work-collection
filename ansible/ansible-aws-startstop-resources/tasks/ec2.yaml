@@ -1,0 +1,14 @@
+---
+
+- name: Start and Stop ec2 instances
+  amazon.aws.ec2:
+    aws_access_key: "{{ secret.access_key }}"
+    aws_secret_key: "{{ secret.secret_access_key }}"
+    region: "{{ global_config.region }}"
+    state: "{{ ((global_config.state != '') | ternary(global_config.state, ec2.state)) }}"
+    instance_tags:
+      Name: "{{ ec2.name }}"
+  with_items: "{{ ec2_vms }}"
+  loop_control:
+    loop_var: ec2
+  register: ec2_reg

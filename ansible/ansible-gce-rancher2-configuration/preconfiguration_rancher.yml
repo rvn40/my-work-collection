@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/private_vars.yml
+    - vars/public_vars.yml
+  tasks: 
+  #  - debug:
+  #      var: vars
+    - include: tasks/preconfiguration_rancher/python3_installation.yml
+    - include: tasks/preconfiguration_rancher/dnf_installation.yml
+    - include: tasks/preconfiguration_rancher/gcloud_sdk_installation.yml
+    - include: tasks/preconfiguration_rancher/docker_installation.yml
+    - include: tasks/preconfiguration_rancher/install_libraries.yml

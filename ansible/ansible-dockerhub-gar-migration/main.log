@@ -1,0 +1,33 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Log into DockerHub] ******************************************************
+ok: [localhost]
+
+TASK [Pull an image] ***********************************************************
+ok: [localhost] => (item={'dh_name': 'tunaiku-rekol-landing-web', 'dh_tag': 'amarui-10', 'gar_name': 'amarbank-amarui', 'gar_tag': 'amarui-10'})
+
+TASK [Log out of DockerHub] ****************************************************
+changed: [localhost]
+
+TASK [Switch user google-sdk] **************************************************
+changed: [localhost]
+
+TASK [Generate token] **********************************************************
+changed: [localhost]
+
+TASK [Log into private repository] *********************************************
+changed: [localhost]
+
+TASK [Tag and push it to a private repo] ***************************************
+changed: [localhost] => (item={'dh_name': 'tunaiku-rekol-landing-web', 'dh_tag': 'amarui-10', 'gar_name': 'amarbank-amarui', 'gar_tag': 'amarui-10'})
+
+TASK [Log out of private repo] *************************************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=9    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

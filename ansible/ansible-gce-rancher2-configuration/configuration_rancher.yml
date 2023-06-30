@@ -1,0 +1,11 @@
+---
+
+- hosts: ap3_rcloud_labs_west1_rancher_k8s_master_01
+  become: yes
+  vars_files:
+    - vars/private_vars.yml
+    - vars/public_vars.yml
+  tasks: 
+    - include: tasks/configuration_rancher/nginx_installation.yml
+    - include: tasks/configuration_rancher/rancher2_installation.yml
+  #  - include: tasks/configuration_rancher/domain_add_record.yml

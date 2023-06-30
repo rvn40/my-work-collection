@@ -1,0 +1,13 @@
+---
+
+- name: List DNS Records
+  uri:
+    url: https://api.godaddy.com/v1/domains/senyumku.com/records/A/dev-api-app-logs/
+    method: GET
+    body_format: json
+    headers:
+      Authorization: sso-key AQN1hqXG71e_BA25udmxKUyMRjX4K4j6cT:NiodNgYs5MbjNi5KcJjaCH
+  register: _dnsList
+
+- debug:
+    msg: "{{_dnsList}}"

@@ -1,0 +1,11 @@
+---
+# Untuk mengecek docker image saat ini yg dipakai di cluster yang sedang berjalan 
+# Untuk menginfokan juga secara tidak langsung ke user apakah saat ini sedang memilih di cluster yg benar(kubectl ctx) dilihat dari hasil log nya (karena kadang lupa mengganti cluster).
+
+- hosts: localhost
+  become: yes
+  become_user: rivan_amarbank
+  vars_files:
+    - vars/private_vars.yml
+  tasks: 
+    - include: tasks/show_images.yml

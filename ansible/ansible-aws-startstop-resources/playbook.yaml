@@ -1,0 +1,12 @@
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/general_config.yaml
+    - vars/secret.yaml
+    - vars/staging/ec2.yaml
+    - vars/staging/rds.yaml
+    - vars/staging/eks_fargate.yaml
+  tasks:
+    - include_tasks: tasks/ec2.yaml
+    - include_tasks: tasks/rds.yaml
+    - include_tasks: tasks/eks_fargate.yaml

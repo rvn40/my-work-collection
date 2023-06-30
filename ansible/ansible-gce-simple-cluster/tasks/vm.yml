@@ -1,0 +1,61 @@
+---
+
+- name: Get info on a network
+  gcp_compute_network_info:
+    filters:
+    - name = "{{ vpc.name }}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+  register: network
+
+- name: Get info on a subnetwork
+  gcp_compute_subnetwork_info:
+    region: "{{general.region_default | default('asia-southeast1')}}"
+    filters:
+    - name = "{{ subnets[0].name }}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+  register: subnetwork
+
+- debug:
+    var: network
+
+- debug:
+    var: subnetwork
+
+- name: Deploy machines with EIP
+  gcp_compute_instance:
+    name: "{{ general.prefix_first }}-{{ general.prefix_second }}-{{ subnets[0].group }}-{{ vms_item[0].cluster_name }}-{{ vms_item[1].role }}-{{ vms_item[1].index }}"
+    machine_type: "{{vms_item[1].type}}"
+    disks:
+    - auto_delete: true
+      boot: yes
+      initialize_params:
+        disk_name: "{{vms_item[0].cluster_name}}-{{vms_item[1].role}}-{{vms_item[1].index}}-disk-01"
+        disk_size_gb: "{{vms_item[1].disk1_size}}"
+        disk_type: "pd-standard"
+        source_image: "{{vms_item[1].images}}"
+    network_interfaces:
+    - network: "{{ network.resources[0] }}"
+      subnetwork: "{{ subnetwork.resources[0] }}"
+      access_configs: # Just delete access_configs and all its properties if you want to deploy without public IP
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+        network_tier: "STANDARD"
+    zone: "{{general.region_default}}-{{ vms_item[1].zone }}"
+    tags:
+      items: "{{ vms_item[1].firewall_tags }}"
+    metadata:
+      "ssh-keys": "{{users.ssh[0].username}}:{{users.ssh[0].pubkey}} {{users.ssh[0].username}}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+    state: "{{ vms_item[1].state }}"
+  with_subelements:
+    - "{{vms}}"
+    - properties
+  loop_control:
+    loop_var: vms_item
+  register: cluster_members

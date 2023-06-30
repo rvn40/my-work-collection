@@ -1,0 +1,11 @@
+---
+
+- name: Install some required libraries  
+  pip:
+    name:
+      - docker==4.3.1
+      - requests==2.24.0
+      - google-auth==1.23.0
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['all_python3'] }}"
+

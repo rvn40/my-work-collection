@@ -1,0 +1,31 @@
+---
+
+postgres:
+  project_name: funding-development
+  sa_name: "amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com"
+  sa_file_loc: "files/serviceaccounts/amarbank-sre-owner.json"
+  instance_name: development-funding-dumpers
+  instance_ip: 34.83.207.225
+  instance_default_username: postgres
+  instance_default_password: l1xKbzBfLuibmowG
+  users:
+    - name: dev_cbs
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_csr
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_depo
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_friendlist
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_invest
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_notification_adapter
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_svc_apps
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: dev_trx_lmt
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: ro
+      pass: ypfAgzpEKwh4ebhTm2umFvPP
+    - name: data_ro
+      pass: ypfAgzpEKwh4ebhTm2umFvPP

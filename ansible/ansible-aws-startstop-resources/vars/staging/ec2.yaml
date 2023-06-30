@@ -1,0 +1,7 @@
+---
+
+ec2_vms:
+  - name: ""
+    state: "stopped"
+  - name: ""
+    state: "stopped"

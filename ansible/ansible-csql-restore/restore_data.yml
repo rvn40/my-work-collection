@@ -1,0 +1,19 @@
+---
+
+
+- hosts: localhost
+  become: yes
+  vars_files:
+    - vars/restore_data.yml
+  tasks: 
+    - name: Activate service account
+      shell: gcloud auth activate-service-account "{{postgres.sa_name}}"  --key-file="{{postgres.sa_file_loc}}" --project="{{postgres.project_name}}"
+
+    - name:  Select service account
+      shell: gcloud config set account "{{postgres.sa_name}}"
+      
+    - name: Restore data to db
+      shell: PGPASSWORD="{{postgres.instance_default_password}}" psql -U "{{postgres.instance_default_username}}" --set ON_ERROR_STOP=on -h "{{postgres.instance_ip}}" -d "{{csql_db_name.db_name}}" -f "files/backup/{{csql_db_name.db_name}}.sql"
+      with_items: "{{postgres.dbs}}"
+      loop_control:
+        loop_var: csql_db_name

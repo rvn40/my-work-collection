@@ -1,0 +1,16 @@
+---
+
+- name: Create a Subnetwork
+  google.cloud.gcp_compute_subnetwork:
+    name: "{{general.prefix_first}}-{{general.prefix_second}}-{{vpc.name}}-{{subnet.group}}-{{subnet.name}}"
+    region: "{{general.region_default}}"
+    network: "{{ rg_network }}"
+    ip_cidr_range: "{{subnet.subnet_range}}"
+    project: "{{ project[0].projectID }}"
+    auth_kind: "{{ project[0].authkind }}"
+    service_account_file: "{{ serviceaccounts[0].json_directory }}{{ serviceaccounts[0].json_name }}"
+    state: present
+  with_items: "{{subnets}}"
+  loop_control:
+    loop_var: subnet
+  register: rg_subnetwork

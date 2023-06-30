@@ -1,0 +1,45 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [List DNS Records] ********************************************************
+ok: [localhost]
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "msg": {
+        "cache_control": "max-age=0, no-cache, no-store",
+        "changed": false,
+        "connection": "close",
+        "content_length": "73",
+        "content_type": "application/json",
+        "cookies": {},
+        "cookies_string": "",
+        "date": "Wed, 23 Dec 2020 07:00:45 GMT",
+        "elapsed": 0,
+        "expires": "Wed, 23 Dec 2020 07:00:45 GMT",
+        "failed": false,
+        "json": [
+            {
+                "data": "172.24.18.5",
+                "name": "dev-api-app-logs",
+                "ttl": 1800,
+                "type": "A"
+            }
+        ],
+        "msg": "OK (73 bytes)",
+        "pragma": "no-cache",
+        "redirected": false,
+        "status": 200,
+        "strict_transport_security": "max-age=15724800; includeSubDomains",
+        "url": "https://api.godaddy.com/v1/domains/senyumku.com/records/A/dev-api-app-logs/",
+        "x_datacenter": "PHX3",
+        "x_request_id": "1a73851635c87ce7d2f1cf84f119ed38"
+    }
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

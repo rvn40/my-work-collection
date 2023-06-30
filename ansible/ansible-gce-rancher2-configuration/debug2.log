@@ -1,0 +1,91 @@
+
+PLAY [ap3_rcloud_labs_west1_rancher_k8s_master_01] *****************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Get info of nginx container] *********************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Remove existing nginx container] *****************************************
+changed: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Create data directories] *************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01] => (item=nginx)
+
+TASK [Get infos on network] ****************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Create a docker network] *************************************************
+skipping: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Copy nginx conf] *********************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Copy ssl files] **********************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01] => (item=cert.pem)
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01] => (item=cert.key)
+
+TASK [debug] *******************************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01] => {
+    "dNetwork": {
+        "changed": false,
+        "exists": true,
+        "failed": false,
+        "network": {
+            "Attachable": false,
+            "ConfigFrom": {
+                "Network": ""
+            },
+            "ConfigOnly": false,
+            "Containers": {
+                "ae6d78942d5918318c61090e6ebea90c66f432f93c71dab74f69e2278151f1a5": {
+                    "EndpointID": "72bc312331d9b69649e9649c4aa092bfa1856e1bb1c1becee5473d5af2c3abad",
+                    "IPv4Address": "172.18.0.2/16",
+                    "IPv6Address": "",
+                    "MacAddress": "02:42:ac:12:00:02",
+                    "Name": "rancher_master_01"
+                }
+            },
+            "Created": "2021-01-14T02:05:01.711827422Z",
+            "Driver": "bridge",
+            "EnableIPv6": false,
+            "IPAM": {
+                "Config": [
+                    {
+                        "Gateway": "172.18.0.1",
+                        "Subnet": "172.18.0.0/16"
+                    }
+                ],
+                "Driver": "default",
+                "Options": null
+            },
+            "Id": "c7e006a90d1e20d4c2f58155f95e602455589283872abfb45212fb5b2602d512",
+            "Ingress": false,
+            "Internal": false,
+            "Labels": {},
+            "Name": "dNetwork01",
+            "Options": {},
+            "Scope": "local"
+        }
+    }
+}
+
+TASK [Create a nginx container] ************************************************
+changed: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Create data directories] *************************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01] => (item=rancher2)
+
+TASK [Get info of rancher container] *******************************************
+ok: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Remove existing rancher container] ***************************************
+changed: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+TASK [Create a rancher container] **********************************************
+changed: [ap3_rcloud_labs_west1_rancher_k8s_master_01]
+
+PLAY RECAP *********************************************************************
+ap3_rcloud_labs_west1_rancher_k8s_master_01 : ok=13   changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

@@ -1,0 +1,572 @@
+ansible-playbook 2.10.3
+  config file = /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/ansible.cfg
+  configured module search path = ['/home/rivan_amarbank/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.7/dist-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.3 (default, Jan 22 2021, 20:04:44) [GCC 8.3.0]
+Using /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/ansible.cfg as config file
+host_list declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+script declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+auto declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+Parsed /etc/ansible/hosts inventory source with ini plugin
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: create_db_users.yml **************************************************
+1 plays in create_db_users.yml
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+
+PLAY [localhost] ***************************************************************
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+
+TASK [Gathering Facts] *********************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db_users.yml:3
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662 `" && echo ansible-tmp-1618542138.0226018-3675-164616435729662="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/setup.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmp2nkmm2_4 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662/AnsiballZ_setup.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662/AnsiballZ_setup.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-cwxouinweegmaontuycttlhdkjihkprd ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662/AnsiballZ_setup.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542138.0226018-3675-164616435729662/ > /dev/null 2>&1 && sleep 0'
+ok: [localhost]
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+META: ran handlers
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+
+TASK [Activate service account] ************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db_users.yml:9
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975 `" && echo ansible-tmp-1618542141.310641-3740-3115468220975="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmpsqo39uvv TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-tbllecedcnztxmtgayqqtfslnxibqjys ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542141.310641-3740-3115468220975/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => {
+    "changed": true,
+    "cmd": "gcloud auth activate-service-account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"  --key-file=\"files/serviceaccounts/amarbank-sre-owner.json\" --project=\"funding-development\"",
+    "delta": "0:00:02.199587",
+    "end": "2021-04-16 03:02:24.525670",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud auth activate-service-account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"  --key-file=\"files/serviceaccounts/amarbank-sre-owner.json\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:02:22.326083",
+    "stderr": "Activated service account credentials for: [amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com]",
+    "stderr_lines": [
+        "Activated service account credentials for: [amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com]"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+
+TASK [Select service account] **************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db_users.yml:12
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825 `" && echo ansible-tmp-1618542144.7728758-3786-228517369251825="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmp8vyf42_z TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-piijxqtxfdslugbpifkboonpgmyfvglz ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542144.7728758-3786-228517369251825/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => {
+    "changed": true,
+    "cmd": "gcloud config set account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"",
+    "delta": "0:00:01.943306",
+    "end": "2021-04-16 03:02:27.239818",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud config set account \"amarbank-sre-owner@amarbank-sre.iam.gserviceaccount.com\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:02:25.296512",
+    "stderr": "Updated property [core/account].",
+    "stderr_lines": [
+        "Updated property [core/account]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+
+TASK [Restore databases users] *************************************************
+task path: /home/rivan_amarbank/Documents/works/repositories/github/rvn40/ansible-csql-restore/create_db_users.yml:15
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: rivan_amarbank
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183 `" && echo ansible-tmp-1618542147.5098338-3835-191002213133183="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmprybcq3m6 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ztzlbqlfifwmhlvyhdtexcvkcrweonxg ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542147.5098338-3835-191002213133183/ > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+changed: [localhost] => (item={'name': 'dev_cbs', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_cbs\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_cbs",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:07.230670",
+    "end": "2021-04-16 03:02:35.267583",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_cbs\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:02:28.036913",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_cbs].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_cbs]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164 `" && echo ansible-tmp-1618542155.3336906-3835-84734741172164="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmp69232avp TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-nlolfqkkajqhpcuuddwgvmxctzedikns ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542155.3336906-3835-84734741172164/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_csr', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_csr\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_csr",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:08.221623",
+    "end": "2021-04-16 03:02:44.259505",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_csr\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:02:36.037882",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_csr].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_csr]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162 `" && echo ansible-tmp-1618542164.320901-3835-239371050024162="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmpt88r286r TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-hypjvpcflfbwbkbqyslhozoovajtpfeb ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542164.320901-3835-239371050024162/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_depo', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_depo\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_depo",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:08.498861",
+    "end": "2021-04-16 03:02:53.517950",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_depo\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:02:45.019089",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_depo].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_depo]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141 `" && echo ansible-tmp-1618542173.5866644-3835-57755914100141="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmpbygtpyqx TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-tyqkkkuhaehzcahugviabcrrnaiaghmz ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542173.5866644-3835-57755914100141/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_friendlist', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_friendlist\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_friendlist",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:06.976253",
+    "end": "2021-04-16 03:03:01.298921",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_friendlist\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:02:54.322668",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_friendlist].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_friendlist]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123 `" && echo ansible-tmp-1618542181.4886684-3835-185182738489123="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmp35_kh857 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-mxwkauqhzjagklxmopsitlvtofasjpxd ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542181.4886684-3835-185182738489123/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_invest', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_invest\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_invest",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:07.219532",
+    "end": "2021-04-16 03:03:09.268975",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_invest\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:03:02.049443",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_invest].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_invest]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604 `" && echo ansible-tmp-1618542189.3305438-3835-249822547616604="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmpqxmf_0pc TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ddzhijpfbgeyoiysxraqrozozbcjkjtx ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542189.3305438-3835-249822547616604/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_notification_adapter', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_notification_adapter\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_notification_adapter",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:05.989176",
+    "end": "2021-04-16 03:03:15.971661",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_notification_adapter\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:03:09.982485",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_notification_adapter].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_notification_adapter]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004 `" && echo ansible-tmp-1618542196.0330455-3835-32068102636004="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmpfz9bvtqx TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-nqlmduswojmronihdvcxlapxnxauethq ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542196.0330455-3835-32068102636004/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_svc_apps', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_svc_apps\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_svc_apps",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:06.224826",
+    "end": "2021-04-16 03:03:22.792880",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_svc_apps\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:03:16.568054",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_svc_apps].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_svc_apps]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651 `" && echo ansible-tmp-1618542202.9793708-3835-247929001457651="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmplidzxeu8 TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-flizwyejkzifignftxtvwubpcltfruyu ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542202.9793708-3835-247929001457651/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'dev_trx_lmt', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"dev_trx_lmt\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "dev_trx_lmt",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:07.498800",
+    "end": "2021-04-16 03:03:30.996290",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"dev_trx_lmt\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:03:23.497490",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [dev_trx_lmt].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [dev_trx_lmt]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282 `" && echo ansible-tmp-1618542211.0672948-3835-14762964087282="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmp854kyvgw TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-jfrnxtylhdaqoutlonhlspdlobhbxgxf ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542211.0672948-3835-14762964087282/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'ro', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"ro\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "ro",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:05.980060",
+    "end": "2021-04-16 03:03:37.740108",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"ro\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:03:31.760048",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [ro].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [ro]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~rivan_amarbank && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/rivan_amarbank/.ansible/tmp `"&& mkdir "` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508 `" && echo ansible-tmp-1618542217.8092744-3835-196446513984508="` echo /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.7/dist-packages/ansible/modules/command.py
+<127.0.0.1> PUT /home/rivan_amarbank/.ansible/tmp/ansible-local-3655gow6chhp/tmpsqkhw73m TO /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508/AnsiballZ_command.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508/ /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508/AnsiballZ_command.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-brbkraivyizdeyihpdwxovvsrkmgawgj ; /usr/bin/python3 /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508/AnsiballZ_command.py'"'"' && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/rivan_amarbank/.ansible/tmp/ansible-tmp-1618542217.8092744-3835-196446513984508/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item={'name': 'data_ro', 'pass': 'ypfAgzpEKwh4ebhTm2umFvPP'}) => {
+    "ansible_loop_var": "csql_db_users",
+    "changed": true,
+    "cmd": "gcloud sql users create \"data_ro\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+    "csql_db_users": {
+        "name": "data_ro",
+        "pass": "ypfAgzpEKwh4ebhTm2umFvPP"
+    },
+    "delta": "0:00:06.054344",
+    "end": "2021-04-16 03:03:44.539930",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "gcloud sql users create \"data_ro\" --instance=\"development-funding-dumpers\" --password=\"ypfAgzpEKwh4ebhTm2umFvPP\" --project=\"funding-development\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-04-16 03:03:38.485586",
+    "stderr": "Creating Cloud SQL user...\n.done.\nCreated user [data_ro].",
+    "stderr_lines": [
+        "Creating Cloud SQL user...",
+        ".done.",
+        "Created user [data_ro]."
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+META: ran handlers
+Read vars_file 'vars/dbs.yml'
+Read vars_file 'vars/db_users.yml'
+META: ran handlers
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

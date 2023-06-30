@@ -1,0 +1,14 @@
+---
+
+general:
+  prefix_first: "rcloud"
+  prefix_second: "labs"
+  region_default: "us-west1"
+  wild_world_range: "0.0.0.0/0"
+python:
+  version: "3.9.0"
+gcloud:
+  downloaded_url:
+  tmp_path: "/tmp/install_gcloud"
+  force_download: yes                     # When downloading the archive, always download the archive, even if it already exists in the temp path.
+  install_path: "{{ ansible_env.HOME }}"  # Path on target node where the unarchived files should land.
